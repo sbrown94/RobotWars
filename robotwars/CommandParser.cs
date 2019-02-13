@@ -21,14 +21,16 @@ namespace RobotWars
             if (error != "none")
             {
                 Console.WriteLine("ERROR: " + error);
-                //Console.WriteLine("Press any key to exit...");
-                //Console.ReadLine();
             }
             return commands;
         }
 
         public string ReadFromFile(string path)
         {
+            if(!System.IO.File.Exists(path))
+            {
+                throw new Exception("commands.txt does not exist");
+            }
             var contents = System.IO.File.ReadAllText(path);
             return contents;
         }

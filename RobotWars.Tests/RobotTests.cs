@@ -2,24 +2,13 @@ using NUnit.Framework;
 using RobotWars;
 using System.Collections.Generic;
 
-namespace Tests
+namespace RobotWars.Tests
 {
     public class Tests
     {
         [SetUp]
         public void Setup()
         {
-        }
-
-        [TestCase("alksjhd", "Not enough data to run simulation.")]
-        [TestCase("5 5\r\n9 3 E\r\nMRRRLLR", "none")]
-        [TestCase("5 5\r\n9 3 E\r\nMRRDEASDLR", "Invalid characters in instructions for Robot 1")]
-        public void TestInputIsValid(string input, string expected)
-        {
-            var commandParser = new CommandParser();
-            var data = commandParser.GetCommands(input);
-            var isValid = commandParser.Validate(data);
-            Assert.AreEqual(isValid, expected);
         }
 
         [TestCase(AbsoluteDirection.East, MovementDirection.Left, AbsoluteDirection.North)]
