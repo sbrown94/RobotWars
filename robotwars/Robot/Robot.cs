@@ -76,7 +76,7 @@ namespace RobotWars
         private void OperateOnCommand(MovementDirection movDir, Arena arena)
         {
             absoluteDirection = spinningController.Turn(absoluteDirection, movDir);
-            position = movingController.Move(absoluteDirection, movDir, position);
+            position = movingController.Move(absoluteDirection, movDir, position, arena);
         }
     }
 }

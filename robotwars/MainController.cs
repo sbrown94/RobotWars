@@ -17,6 +17,8 @@ namespace RobotWars
             arena = new Arena(arenaSize);
             robots = new List<Robot>();
 
+            // iterate over the command list to initialize the robots
+            // every two lines is one new robot
             for (int i = 1; i < commands.Count; i += 2)
             {
                 var robotInitCommand = commands[i].Split(' ');
@@ -31,6 +33,7 @@ namespace RobotWars
             return outputs;
         }
 
+        // execute the commands for each robot in order and return to Main
         public List<string> RunSimulation()
         {
             List<string> outputs = new List<string>();

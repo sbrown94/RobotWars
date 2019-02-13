@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace RobotWars
 {
-    class MovingController
+    public class MovingController
     {
-        public Point Move(AbsoluteDirection absDir, MovementDirection movDir, Point pos)
+        public Point Move(AbsoluteDirection absDir, MovementDirection movDir, Point pos, Arena arena)
         {
             if (movDir == MovementDirection.Move)
             {
+                Point oldPos = pos;
                 switch (absDir)
                 {
                     case AbsoluteDirection.North:
@@ -28,6 +29,14 @@ namespace RobotWars
                         break;
                     default:
                         break;
+                }
+                if(pos.x > arena.size.x ||
+                    pos.y > arena.size.y ||
+                    pos.x < 0 ||
+                    pos.y < 0)
+                {
+                    // movement is invalid, goes over the edge of the arena
+                    // TODO: what happens in this case?
                 }
             }
             return pos;
