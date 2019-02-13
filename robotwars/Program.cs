@@ -4,19 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace robotwars
+namespace RobotWars
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            var test = Program.PrintHello();
-        }
-
-        int PrintHello()
-        {
-            Console.WriteLine("Hello World");
-            return 1;
+            CommandParser parser = new CommandParser();
+            var commands = parser.GetCommandsFromFile("commands.txt");
+            MainController mControl = new MainController();
+            List<string> output = new List<string>();
+            output = mControl.InitSimulation(commands);
+            foreach(var line in output)
+            {
+                Console.WriteLine(line);
+            }
+            Console.ReadLine();
         }
     }
 }
