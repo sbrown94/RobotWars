@@ -42,9 +42,10 @@ A: Robots can pass through each other, but cannot stop on the same square as a p
 3) InitSimulation instantiates the arena from the first line of the command list, and then the required number of robots by reading each set of two lines until EOF.
 4) InitSimulation calls RunSimulation which loops through every robot and calls RunCommands on them, passing in the arena.
 5) Each robot loops through their member commands and calls SpinningController and MovingController in turn to determine which direction to turn (if any) and whether or not to move forward respectively. If a robot would fall off the stage, the simulation is halted with an error.
-6) Each robot returns their final position and heading to the MainController.
-7) Once all robots are done, MainController returns the list of outputs to Main.
-8) Main displays the output on screen and exits.
+6) Once a robot has finished executing their instructions, they check if they are now on top of another robot. If so, the program halts with an error.
+7) Each robot returns their final position and heading to the MainController.
+8) Once all robots are done, MainController returns the list of outputs to Main.
+9) Main displays the output on screen and exits.
 
 ---
 
