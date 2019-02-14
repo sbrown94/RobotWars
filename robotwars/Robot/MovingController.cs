@@ -36,7 +36,7 @@ namespace RobotWars
                     pos.y < 0)
                 {
                     // movement is invalid, goes over the edge of the arena
-                    throw new Exception("Robot attempted to access position " + pos.x + "," + pos.y + " which exceed the limits of the stage.");
+                    throw new Exception("Robot attempted to access position " + pos.x + ", " + pos.y + " which exceed the limits of the stage.");
                 }
             }
             return pos;
