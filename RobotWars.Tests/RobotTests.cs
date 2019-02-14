@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace RobotWars.Tests
 {
-    public class Tests
+    public class RobotTests
     {
         [TestCase(AbsoluteDirection.East, MovementDirection.Left, AbsoluteDirection.North)]
         [TestCase(AbsoluteDirection.North, MovementDirection.Move, AbsoluteDirection.North)]
