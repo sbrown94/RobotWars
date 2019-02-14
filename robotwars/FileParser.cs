@@ -51,6 +51,7 @@ namespace RobotWars
         {
             if (commands.Count() == 0) return "Command list is empty.";
             if (commands.Count() < 3) return "Not enough data to run simulation.";
+            if (commands.Count() % 2 != 1) return "Each robot must have a starting location and instructions.";
             var arenaSetup = commands[0].Split(' ');
             if (arenaSetup.Count() != 2) return "Arena setup is invalid.";
             foreach(var coord in arenaSetup)
