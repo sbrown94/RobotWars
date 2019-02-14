@@ -10,8 +10,12 @@ namespace RobotWars
     {
         Arena arena;
         List<Robot> robots;
-        public List<string> InitSimulation(List<string> commands)
+        public List<string> InitSimulation()
         {
+            // initialize the command parser and read in from the txt file
+            FileParser parser = new FileParser();
+            var commands = parser.GetCommandsFromFile("commands.txt");
+
             var arenaCommand = commands[0].Split(' ');
             var arenaSize = new Point(Int32.Parse(arenaCommand[0]), Int32.Parse(arenaCommand[1]));
             arena = new Arena(arenaSize);

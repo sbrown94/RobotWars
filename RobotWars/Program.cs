@@ -10,14 +10,10 @@ namespace RobotWars
     {
         static void Main(string[] args)
         {
-            // initialize the command parser and read in from the txt file
-            FileParser parser = new FileParser();
-            var commands = parser.GetCommandsFromFile("commands.txt");
-
             // initialize the main controller that will control the simulation
             MainController mControl = new MainController();
             List<string> output = new List<string>();
-            output = mControl.InitSimulation(commands);
+            output = mControl.InitSimulation();
 
             // display output and wait for user input to terminate
             Console.WriteLine("Output:");
