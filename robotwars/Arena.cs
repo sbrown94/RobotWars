@@ -39,7 +39,13 @@ namespace RobotWars
 
         public void SetPositionOccupied(Point pos)
         {
+            if (!CheckPositionIsContained(pos)) throw new Exception("Attempted to set a position outside of the arena");
             occupiedPoints.Add(pos);
+        }
+
+        public List<Point> GetAllOccupiedPoints()
+        {
+            return occupiedPoints;
         }
     }
 }
