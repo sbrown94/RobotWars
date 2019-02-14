@@ -16,8 +16,14 @@ namespace RobotWars.Tests
             Assert.IsTrue(isValid);
         }
 
-        [TestCase("5 5\r\n4 3 E\r\nMRRDEASDLR", "Invalid characters in instructions for Robot 1")]
         [TestCase("5 5\r\n2 2 W\r\nMMRRMMLL\r\n2 4 E", "Each robot must have a starting location and instructions")]
+        [TestCase("ABBB B\r\n4 3 E\r\nMRRDEASDLR", "Arena setup size is invalid")]
+        [TestCase("", "Not enough data to run simulation")]
+        [TestCase("2 3\r\n4 3 N", "Not enough data to run simulation")]
+        [TestCase("5 5\r\nWRONG\r\nMMRRMMLL", "Invalid starting position for Robot 1")]
+        [TestCase("5 5\r\n7 3 E\r\nMMRRMMLL", "Starting coordinates are outside the range of the arena for Robot 1")]
+        [TestCase("5 5\r\n4 3 X\r\nMMRRMMLL", "Invalid starting direction for Robot 1")]
+        [TestCase("5 5\r\n4 3 E\r\nMRRDEASDLR", "Invalid characters in instructions for Robot 1")]
         public void TestInputIsInvalid(string input, string expected)
         {
             var fileParser = new FileParser();

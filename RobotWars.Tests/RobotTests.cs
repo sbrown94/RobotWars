@@ -45,6 +45,7 @@ namespace RobotWars.Tests
 
         [TestCase(5, 5, 1, 2, 'N', "LMLMLMLMM", "1 3 N")]
         [TestCase(5, 5, 3, 3, 'E', "MMRMMRMRRM", "5 1 E")]
+        [TestCase(10, 10, 3, 3, 'N', "MLMMLM", "1 3 S")]
         public void TestRobot(int arenaX, int arenaY, int robotX, int robotY, char startFacing, string commands, string expected)
         {
             Robot robot = new Robot(startFacing, new Point(robotX, robotY), commands);
