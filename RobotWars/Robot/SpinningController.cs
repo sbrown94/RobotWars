@@ -10,6 +10,7 @@ namespace RobotWars
     {
         public AbsoluteDirection Turn(AbsoluteDirection absDir, MovementDirection movDir)
         {
+            // if max, wrap around
             var noDirections = Enum.GetNames(typeof(AbsoluteDirection)).Length;
             switch (movDir)
             {

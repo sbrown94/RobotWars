@@ -49,7 +49,7 @@ As per spec:
 
 I began by identifying the key elements of the problem. These are the Robot(s), the Moving Controller, the Spinning Controller, the Arena and the Main Controller. I also saw a need to develop a Parser and Validation system to read in data from a txt file.
 
-I first mocked up a quick version of the program, then attempted to follow TDD by testing and implementing each section in turn. I have attempted to adhere as closely as possible to the Command Pattern, allowing the Main Controller to have control of when parsing data, initialising the simulation and returning the results happens. Further I have tried to pay particular attention to SRP - robots need only care about themselves, and the arena will handle checking of positions.
+I first mocked up a quick version of the program, then attempted to follow TDD by testing and implementing each section in turn. I have attempted to adhere as closely as possible to the Command Pattern, allowing the Main Controller to have control of when parsing data, initialising the simulation and returning the results happens. Further I have tried to pay particular attention to SRP - robots need only care about themselves, and the arena will handle checking of positions. The project was designed to be as extensible as possible.
 
 ---
 
