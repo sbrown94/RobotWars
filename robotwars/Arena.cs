@@ -9,9 +9,37 @@ namespace RobotWars
     public class Arena
     {
         public Point size;
+        List<Point> occupiedPoints;
         public Arena(Point s)
         {
             size = s;
+            occupiedPoints = new List<Point>();
+        }
+
+        public bool CheckPositionIsContained(Point pos)
+        {
+            if (pos.x > size.x ||
+                pos.y > size.y ||
+                pos.x < 0 ||
+                pos.y < 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool CheckPositionIsOccupied(Point pos)
+        {
+            if (occupiedPoints.Any(point => point.x == pos.x && point.y == pos.y))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void SetPositionOccupied(Point pos)
+        {
+            occupiedPoints.Add(pos);
         }
     }
 }
