@@ -40,6 +40,7 @@ namespace RobotWars
         public void SetPositionOccupied(Point pos)
         {
             if (!CheckPositionIsContained(pos)) throw new Exception("Attempted to set a position outside of the arena");
+            if (CheckPositionIsOccupied(pos)) throw new Exception("A robot already exists at position " + pos.x + "," + pos.y);
             occupiedPoints.Add(pos);
         }
 

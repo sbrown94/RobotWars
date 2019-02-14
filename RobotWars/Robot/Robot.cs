@@ -65,11 +65,6 @@ namespace RobotWars
                 OperateOnCommand(_movDict[command], arena);
             }
 
-            // check we aren't sitting on another robot after finishing
-            if(arena.CheckPositionIsOccupied(position))
-            {
-                throw new Exception("A robot already exists at position " + position.x + "," + position.y);
-            }
             arena.SetPositionOccupied(position);
 
             // return data of location
