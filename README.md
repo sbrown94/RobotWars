@@ -2,18 +2,17 @@
 
 # Running the Program
 
-Make sure there is a "commands.txt" file in the root directory and that the commands follow the correct format
-Run RobotWars.exe to see the output
+Make sure there is a "commands.txt" file in the root directory and that the commands follow the correct format. Run RobotWars.exe to see the output
 
 ---
 
 # Input Format Example
 
-5 5
-1 2 N
-LMLMLMLMM
-3 3 E
-MMRMMRMRRM
+5 5<br />
+1 2 N<br />
+LMLMLMLMM<br />
+3 3 E<br />
+MMRMMRMRRM<br />
 
 Line 1 must be the width and height of the arena
 
