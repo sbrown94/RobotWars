@@ -14,6 +14,7 @@ namespace RobotWars
             var commands = GetCommands(fileData);
             return commands;
         }
+
         public List<string> GetCommands(string rawCommands)
         {
             var commands = GetCommandsAsStringList(rawCommands);
@@ -42,20 +43,18 @@ namespace RobotWars
             return commandStack;
         }
 
-        // Validate that the input text file is in the correct format to run the simulation
         public bool Validate(List<string> commands)
         {
-            var errMsg = "";
-            if (commands.Count() == 0) errMsg = "Command list is empty";
-            if (commands.Count() < 3) errMsg = "Not enough data to run simulation";
-            if (commands.Count() % 2 != 1) errMsg = "Each robot must have a starting location and instructions";
+            if (commands.Count() == 0) ValidationError("Command list is empty");
+            if (commands.Count() < 3) ValidationError("Not enough data to run simulation");
+            if (commands.Count() % 2 != 1) ValidationError("Each robot must have a starting location and instructions");
             var arenaSetup = commands[0].Split(' ');
-            if (arenaSetup.Count() != 2) errMsg = "Arena setup is invalid.";
+            if (arenaSetup.Count() != 2) ValidationError("Arena setup is invalid.");
             foreach(var coord in arenaSetup)
             {
                 var num = -1;
                 var ok = Int32.TryParse(coord, out num);
-                if (!ok) errMsg = "Arena setup size is invalid";
+                if (!ok) ValidationError("Arena setup size is invalid");
             }
             Point arenaSetupCoords = new Point(Int32.Parse(arenaSetup[0]), Int32.Parse(arenaSetup[1]));
             for (var i = 1; i < commands.Count(); i++)
@@ -64,23 +63,23 @@ namespace RobotWars
                 {
                     var robotNo = (((float)i / 2) + 0.5f);
                     var line = commands[i].Split(' ');
-                    if (line.Count() != 3) errMsg = "Invalid starting position for Robot " + robotNo;
+                    if (line.Count() != 3) ValidationError("Invalid starting position for Robot " + robotNo);
                     for(var j = 0; j < 3; j++)
                     {
                         if (j < 2)
                         {
                             var num = -1;
                             var ok = Int32.TryParse(line[j], out num);
-                            if (!ok) errMsg = "Invalid coordinates for Robot " + robotNo;
+                            if (!ok) ValidationError("Invalid coordinates for Robot " + robotNo);
                             var xOrY = j == 0 ? arenaSetupCoords.x : arenaSetupCoords.y;
-                            if (num < 0 || num > xOrY) errMsg = "Starting coordinates are outside the range of the arena for Robot " + robotNo;
+                            if (num < 0 || num > xOrY) ValidationError("Starting coordinates are outside the range of the arena for Robot " + robotNo);
                         }
                         else
                         {
                             var ch = '#';
                             var ok = char.TryParse(line[j], out ch);
-                            if (!ok && (ch == 'N' || ch == 'E' || ch == 'W' || ch == 'S'))
-                                errMsg = "Invalid starting direction for Robot " + robotNo;
+                            if (!ok || (ch != 'N' && ch != 'E' && ch != 'W' && ch != 'S'))
+                                ValidationError("Invalid starting direction for Robot " + robotNo);
                         }
                     }
                 }
@@ -89,14 +88,15 @@ namespace RobotWars
                     var robotNo = ((i / 2));
                     var line = commands[i];
                     bool ok = line.All(x => "LMR".Contains(x));
-                    if (!ok) errMsg = "Invalid characters in instructions for Robot " + robotNo;
+                    if (!ok) ValidationError("Invalid characters in instructions for Robot " + robotNo);
                 }
             }
-            if(errMsg != "")
-            {
-                throw new Exception(errMsg);
-            }
             return true;
+        }
+
+        private void ValidationError(string error)
+        {
+            throw new Exception(error);
         }
     }
 }
