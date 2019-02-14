@@ -18,17 +18,11 @@ namespace RobotWars
     }
     public class Robot
     {
-        // The direction the robot is currently facing
-        private AbsoluteDirection absoluteDirection;
+        private AbsoluteDirection absoluteDirection; // the cardinal direction the robot is currently facing
         private SpinningController spinningController;
         private MovingController movingController;
-        private Point position;
-        private string myCommands;
-        public AbsoluteDirection AbsoluteDirection
-        {
-            get { return absoluteDirection; }
-            set { absoluteDirection = value; }
-        }
+        private Point position; // the robot's current position in the arena
+        private string myCommands; // the robot's list of commands to run
 
         // Map input chars to MovementDirection enum
         static Dictionary<char, MovementDirection> _movDict = new Dictionary<char, MovementDirection>
