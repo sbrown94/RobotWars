@@ -2,9 +2,11 @@
 
 RobotWars is a simulation of robots moving on an arena based on specific inputs.
 
+---
+
 # Running the Program
 
-Make sure there is a "commands.txt" file in the root directory and that the commands follow the correct format. Run RobotWars.exe to see the output
+Make sure there is a "commands.txt" file in the Build directory and that the commands follow the correct format. Run RobotWars.exe in the Build directory to see the output.
 
 ---
 
