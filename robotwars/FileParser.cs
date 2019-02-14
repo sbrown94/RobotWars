@@ -59,34 +59,39 @@ namespace RobotWars
                 var ok = Int32.TryParse(coord, out num);
                 if (!ok) return "Arena setup size is invalid";
             }
-            for(var i = 1; i < commands.Count(); i++)
+            Point arenaSetupCoords = new Point(Int32.Parse(arenaSetup[0]), Int32.Parse(arenaSetup[1]));
+            for (var i = 1; i < commands.Count(); i++)
             {
                 if(i % 2 == 1)
                 {
+                    var robotNo = (((float)i / 2) + 0.5f);
                     var line = commands[i].Split(' ');
-                    if (line.Count() != 3) return "Invalid starting position for Robot " + ((i / 2) + 0.5);
+                    if (line.Count() != 3) return "Invalid starting position for Robot " + robotNo;
                     for(var j = 0; j < 3; j++)
                     {
                         if (j < 2)
                         {
                             var num = -1;
                             var ok = Int32.TryParse(line[j], out num);
-                            if (!ok) return "Invalid coordinates for Robot " + ((i / 2) + 0.5);
+                            if (!ok) return "Invalid coordinates for Robot " + robotNo;
+                            var xOrY = j == 0 ? arenaSetupCoords.x : arenaSetupCoords.y;
+                            if (num < 0 || num > xOrY) return "Starting coordinates are outside the range of the arena for Robot " + robotNo;
                         }
                         else
                         {
                             var ch = '#';
                             var ok = char.TryParse(line[j], out ch);
                             if (!ok && (ch == 'N' || ch == 'E' || ch == 'W' || ch == 'S'))
-                                return "Invalid starting direction for Robot " + ((i / 2) + 0.5);
+                                return "Invalid starting direction for Robot " + robotNo;
                         }
                     }
                 }
                 else
                 {
+                    var robotNo = ((i / 2));
                     var line = commands[i];
                     bool ok = line.All(x => "LMR".Contains(x));
-                    if (!ok) return "Invalid characters in instructions for Robot " + ((i / 2));
+                    if (!ok) return "Invalid characters in instructions for Robot " + robotNo;
                 }
             }
             return "none";
