@@ -51,7 +51,7 @@
   <ItemGroup>
     <Compile Include="Enums\AbsoluteDirection.cs" />
     <Compile Include="Arena.cs" />
-    <Compile Include="CommandParser.cs" />
+    <Compile Include="FileParser.cs" />
     <Compile Include="MainController.cs" />
     <Compile Include="Robot\MovingController.cs" />
     <Compile Include="Enums\MovementDirection.cs" />

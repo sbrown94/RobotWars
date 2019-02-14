@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RobotWars
 {
-    public class CommandParser
+    public class FileParser
     {
         public List<string> GetCommandsFromFile(string path)
         {
@@ -20,7 +20,7 @@ namespace RobotWars
             string error = Validate(commands);
             if (error != "none")
             {
-                Console.WriteLine("ERROR: " + error);
+                throw new Exception(error);
             }
             return commands;
         }

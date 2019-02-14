@@ -11,7 +11,7 @@ namespace RobotWars
         static void Main(string[] args)
         {
             // initialize the command parser and read in from the txt file
-            CommandParser parser = new CommandParser();
+            FileParser parser = new FileParser();
             var commands = parser.GetCommandsFromFile("commands.txt");
 
             // initialize the main controller that will control the simulation
