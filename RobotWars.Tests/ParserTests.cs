@@ -16,6 +16,7 @@ namespace RobotWars.Tests
             Assert.IsTrue(isValid);
         }
 
+        [TestCase("alksjhd", "Not enough data to run simulation")]
         [TestCase("5 5\r\n2 2 W\r\nMMRRMMLL\r\n2 4 E", "Each robot must have a starting location and instructions")]
         [TestCase("ABBB B\r\n4 3 E\r\nMRRDEASDLR", "Arena setup size is invalid")]
         [TestCase("", "Not enough data to run simulation")]
@@ -32,13 +33,5 @@ namespace RobotWars.Tests
             Assert.That(ex.Message, Is.EqualTo(expected));
         }
 
-        [TestCase("alksjhd", "Input string was not in a correct format.")]
-        public void TestInputFormatIsValid(string input, string expected)
-        {
-            var fileParser = new FileParser();
-            var data = fileParser.GetCommandsAsStringList(input);
-            var ex = Assert.Throws<FormatException>(() => fileParser.Validate(data));
-            Assert.That(ex.Message, Is.EqualTo(expected));
-        }
     }
 }

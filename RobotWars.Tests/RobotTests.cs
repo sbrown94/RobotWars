@@ -7,11 +7,6 @@ namespace RobotWars.Tests
 {
     public class Tests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [TestCase(AbsoluteDirection.East, MovementDirection.Left, AbsoluteDirection.North)]
         [TestCase(AbsoluteDirection.North, MovementDirection.Move, AbsoluteDirection.North)]
         [TestCase(AbsoluteDirection.South, MovementDirection.Right, AbsoluteDirection.West)]

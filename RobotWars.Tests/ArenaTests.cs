@@ -31,7 +31,7 @@ namespace RobotWars.Tests
         public void TestSetPositionoccupiedFail(int robotX, int robotY, string exception)
         {
             var ex = Assert.Throws<Exception>(() => mockArena.SetPositionOccupied(new Point(robotX, robotY)));
-                Assert.That(ex.Message, Is.EqualTo(exception));
+            Assert.That(ex.Message, Is.EqualTo(exception));
         }
     }
 
