@@ -6,7 +6,7 @@ RobotWars is a simulation of robots moving on an arena based on specific inputs.
 
 # Running the Program
 
-Make sure there is a "commands.txt" file in the Build directory and that the commands follow the correct format. Run RobotWars.exe in the Build directory to see the output.
+Make sure there is a "commands.txt" file in the Build directory and that the commands follow the correct format. Run RobotWars.exe in the Build directory to see the output. A sample input is provided at root.
 
 ---
 
@@ -70,3 +70,5 @@ I first mocked up a quick version of the program, then attempted to follow TDD b
 # Future Extensions
 
 - As all robots handle their own commands, extending the system so that robots run simultaneously could be done by making the call to RunCommands asynchronous. This would be sufficient on it's own if all robots were still allowed to pass through each other. If robots needed to collide with one another, each robot would need to wait for all other robots to finish their move and then check the state of the arena. A check will also be needed at the end to ensure no robot has finished on top of another robot.
+
+- The program could be adapted to follow the Template Pattern by abstracting the behaviour of the rober and arena into an interface, and making the Main Controller into an abstract class.
