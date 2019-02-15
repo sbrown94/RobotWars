@@ -53,6 +53,13 @@ I first mocked up a quick version of the program, then attempted to follow TDD b
 
 ---
 
+# Tools
+
+- Visual Studio 2017 for development
+- NUnit for testing
+
+---
+
 # Program flow
 
 1) Main instantiates MainController
